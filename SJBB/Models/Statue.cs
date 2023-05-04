@@ -9,6 +9,7 @@ public class Statue {
     public  int? Height { get; set; }
     [Column(TypeName = "decimal(11,2)")]
     public decimal Price { get; set; }
-    public int OrderId { get; set; }
-    public virtual Order? Order { get; set; }
+    public int VendorId { get; set; }
+    public virtual Vendor? Vendor { get; set; }
+
 }

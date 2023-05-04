@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SJBB.Models;
 
@@ -10,9 +11,10 @@ using SJBB.Models;
 namespace SJBB.Migrations
 {
     [DbContext(typeof(SJBBDbContext))]
-    partial class SJBBDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230406192120_change-in-classes-and-controllers")]
+    partial class changeinclassesandcontrollers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +70,7 @@ namespace SJBB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("SJBB.Models.Employee", b =>
@@ -114,7 +116,7 @@ namespace SJBB.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("SJBB.Models.Order", b =>
@@ -135,7 +137,7 @@ namespace SJBB.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SJBB.Models.Orderline", b =>
@@ -161,7 +163,7 @@ namespace SJBB.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Orderline", (string)null);
+                    b.ToTable("Orderline");
                 });
 
             modelBuilder.Entity("SJBB.Models.Product", b =>
@@ -195,7 +197,7 @@ namespace SJBB.Migrations
 
                     b.HasIndex("vendorId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("SJBB.Models.Vendor", b =>
@@ -249,7 +251,7 @@ namespace SJBB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vendors", (string)null);
+                    b.ToTable("Vendors");
                 });
 
             modelBuilder.Entity("SJBB.Models.Order", b =>

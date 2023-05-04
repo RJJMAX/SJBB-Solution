@@ -7,6 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\BooksController.cs" />
+    <Compile Remove="Controllers\MiscellaneousController.cs" />
+    <Compile Remove="Controllers\PicturesController.cs" />
+    <Compile Remove="Controllers\ProductsController.cs" />
+    <Compile Remove="Controllers\StatuesController.cs" />
+    <Compile Remove="Models\Book.cs" />
+    <Compile Remove="Models\Children.cs" />
+    <Compile Remove="Models\Miscellaneous.cs" />
+    <Compile Remove="Models\Picture.cs" />
+    <Compile Remove="Models\Statue.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="6.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.15">
       <PrivateAssets>all</PrivateAssets>

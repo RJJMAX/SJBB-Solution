@@ -35,7 +35,11 @@ namespace SJBB.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Orderline>> GetOrderline(int id)
         {
-          if (_context.Orderline == null)
+            var order = await _context.Orderline.Include(x => x.Product)
+                                 .Include(x => x.Order)
+                                 .SingleOrDefaultAsync(x => x.Id == id);
+
+            if (_context.Orderline == null)
           {
               return NotFound();
           }
@@ -47,6 +51,21 @@ namespace SJBB.Controllers
             }
 
             return orderline;
+        }
+
+        private async Task<IActionResult> RecalculateOrderTotal(int ordersId) {
+            var order = await _context.Orders.FindAsync(ordersId);
+            order.Total = (
+                from ol in _context.Orderline
+                join p in _context.Products         // possible group join using book, statue..etc classes and products.
+                on ol.OrderId equals p.Id
+                where ol.OrderId == ordersId
+                select new {linetotal = ol.Quantity * p.Price,
+                
+                }).Sum(x => x.linetotal);
+            await _context.SaveChangesAsync();
+            return Ok();
+
         }
 
         // PUT: api/Orderlines/5
